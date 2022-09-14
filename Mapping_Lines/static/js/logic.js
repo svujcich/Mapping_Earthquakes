@@ -17,7 +17,7 @@ let line = [
   // [47.4502, -122.3088]
 ];
 
-// 4. Create a polyline using the line coordinates and make the line red.
+// 4. Create a polyline using the line coordinates and make the line blue.
 L.polyline(line, {
     color: "blue",
     weight: 4,
