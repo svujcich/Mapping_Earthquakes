@@ -93,14 +93,14 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/sate
   //[4] Create a base layer that holds both maps.
 let baseMaps = {
   "Streets": streets,
-  "Satellite Streets": satelliteStreets
+  "Satellite": satelliteStreets
 };
 
 //[5] Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
   center: [39.5, -98.5],
   zoom: 3,
-  layers: [streets]
+  layers: [satelliteStreets]
 });
 
 // [6] // Pass map layers into layers control and add the layers control to the map.
@@ -115,7 +115,11 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       console.log(data);
       return L.circleMarker(latlng);
     },
-    style: styleInfo
+    style: styleInfo,
+    //create popup for each circle marker
+    onEachFeature: function(feature, layer) {
+    layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+    }
     
   }).addTo(map);
 });
@@ -127,12 +131,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       return {
         opacity: 1,
         fillOpacity: 1,
-        fillColor: "#ffae42",
+        fillColor: getColor(feature.properties.mag),
         color: "#000000",
         radius: getRadius(feature.properties.mag),
         stroke: true,
         weight: 0.5
       };
+
   // This function determines the radius of the earthquake marker based on its magnitude.
   // Earthquakes with a magnitude of 0 will be plotted with a radius of 1.
   function getRadius(magnitude) {
@@ -142,4 +147,24 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     return magnitude * 4;
     };
     };
+
+    // This function determines the color of the circle based on the magnitude of the earthquake.
+function getColor(magnitude) {
+  if (magnitude > 5) {
+    return "#ea2c2c";
+  }
+  if (magnitude > 4) {
+    return "#ea822c";
+  }
+  if (magnitude > 3) {
+    return "#ee9c00";
+  }
+  if (magnitude > 2) {
+    return "#eecc00";
+  }
+  if (magnitude > 1) {
+    return "#d4ee00";
+  }
+  return "#98ee00";
+}
 
