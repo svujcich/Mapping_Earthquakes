@@ -1,2 +1,2 @@
-# Mapping_Earthquakes
-A javascript project which uses geojson data to plot earthquakes by size and magnitude
+## Overview 
+This projet features Javascript code is utilized in combination with the Leaflet and D3 libraries, to makes API requests about earthquake data, and visualise the data on a map using Mapbox. The map features 3 different base layers, a street view, a satellite view and a dark view to toggle between. The map also features 3 layers; a view of the tectonic plate lines, earthquakes in the past 7 days, and major earthquakes in the past 7 days. The different layers can viewed independentantly or overlayed on layers.  
