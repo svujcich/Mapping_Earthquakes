@@ -27,13 +27,13 @@ let map = L.map('mapid').setView([40.7, -94.5], 4);
 
 //5. replace single marker with cities.js file
 
-// 6a. Get data from cities.js
+// 6a. Get data from cities.jsS
 let cityData = cities;
 
 // 6b. add reference for cities.jsfile in index.html
 
 // 6c. // Loop through the cities array and create one marker for each city.
-cities.forEach(function(city) {
+cityData.forEach(function(city) {
     console.log(city)
     // 6d. add marker to map // 6g.Replace markers with circle and assign radius based on population size
     L.circleMarker(city.location, {
@@ -46,7 +46,7 @@ cities.forEach(function(city) {
 //   .addTo(map);
     // 6f. add a thousands separator for the population(.toLocaleString)
     .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
-  .addTo(map);
+    .addTo(map);
     
      
    

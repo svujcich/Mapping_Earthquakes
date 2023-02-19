@@ -25,7 +25,7 @@ let map = L.map('mapid').setView([40.7, -94.5], 4);
 // Add the 'graymap' tile layer to the map.
 // streets.addTo(map);
 
-// 4a. Add a marker to the map for Los Angeles, California.
+// //4a. Add a marker to the map for Los Angeles, California.
 // let marker = L.marker([34.0522, -118.2437]).addTo(map);
 
 //4b. change marker to a circle -- ALTERNATIVE: L.circleMarker([34.0522, -118.2437]).addTo(map);
