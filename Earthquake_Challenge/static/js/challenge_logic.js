@@ -79,11 +79,15 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
   // This function determines the color of the marker based on the magnitude of the earthquake.
   function getColor(magnitude) {
+    
+    if (magnitude > 6) {
+      return "#730101";
+    } 
     if (magnitude > 5) {
       return "#ea2c2c";
     }
     if (magnitude > 4) {
-      return "#ea822c";
+      return "#fc6b03";
     }
     if (magnitude > 3) {
       return "#ee9c00";
@@ -136,14 +140,15 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   // Then add all the details for the legend
   legend.onAdd = function() {
     let div = L.DomUtil.create("div", "info legend");
-    const magnitudes = [0, 1, 2, 3, 4, 5];
+    const magnitudes = [0, 1, 2, 3, 4, 5, 6];
     const colors = [
       "#98ee00",
       "#d4ee00",
       "#eecc00",
       "#ee9c00",
       "#fc6b03",
-      "#ea2c2c"
+      "#ea2c2c",
+      "#730101"
     ];
 
     // Looping through our intervals to generate a label with a colored square for each interval.
@@ -178,13 +183,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
     function getColor(magnitude){
       if(magnitude > 6) {
-        return "#ea2c2c";
+        return "#730101";
       } 
       else if(magnitude > 5) {
-        return "#fc6b03";
+        return "#ea2c2c";
       }
       else {
-        return "#ee9c00";
+        return "#fc6b03";
       };
     }
            
