@@ -107,7 +107,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     if (magnitude > 0) {
       return magnitude * 4;
     } else {
-    return 1
+    return ""
     };
   }
 
@@ -163,11 +163,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   legend.addTo(map)
 
   //MAJOR EARTHQUAKES
-  // 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
+  // 3. Retrieve the major earthquake GeoJSON data > 4.5 mag for the week.
   let majorEarthquakeData = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
   
   d3.json(majorEarthquakeData).then(function(data) {
-    // 4. usa the same style as the earthquake data
+    // 4. use the same style as the earthquake data
+    //REFACTOR HERE!  
+
     function styleInfo(feature){
       return {
         opacity: 1,
