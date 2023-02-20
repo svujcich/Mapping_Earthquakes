@@ -134,7 +134,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       "#d4ee00",
       "#eecc00",
       "#ee9c00",
-      "#ea822c",
+      "#fc6b03",
       "#ea2c2c"
     ]
 
@@ -158,21 +158,25 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       return {
         opacity: 1,
         fillColor: getColor(feature.properties.mag),
+         fillOpacity: 1,
         color: "#000000",
         radius: getRadius(feature.properties.mag),
         stroke: true,
-        weight: 0.5
+        weight: 3
       }
 
     // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
+
     function getColor(magnitude){
       if(magnitude > 6) {
         return "#ea2c2c";
+      } 
+      else if(magnitude > 5) {
+        return "#fc6b03";
       }
-      if(magnitude > 5) {
-        return "#ea822c";
+      else {
+        return "#ee9c00";
       }
-        return "#ea2c2c";
     } 
   }  
     // 6. Use the function that determines the radius of the earthquake marker based on its magnitude.
